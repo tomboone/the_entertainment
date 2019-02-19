@@ -1,0 +1,21 @@
+uuid: 918f1b40-1a0a-45b1-a8a0-d06a76c4a92a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.entertainment_review.field_review_notes
+    - the_entertainment_reviews.entertainment_review_type.entertainment_review
+  module:
+    - text
+id: entertainment_review.entertainment_review.field_review_notes
+field_name: field_review_notes
+entity_type: entertainment_review
+bundle: entertainment_review
+label: Review/Notes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

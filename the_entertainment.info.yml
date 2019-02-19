@@ -1,0 +1,5 @@
+name: 'The Entertainment'
+type: module
+description: 'Module for creating entertainment (Books, Movies, TV Shows) entities'
+core: 8.x
+package: 'The Entertainment'

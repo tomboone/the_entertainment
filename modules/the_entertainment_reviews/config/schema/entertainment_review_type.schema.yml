@@ -1,0 +1,12 @@
+the_entertainment_reviews.entertainment_review_type.*:
+  type: config_entity
+  label: 'Entertainment review type config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string

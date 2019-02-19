@@ -1,0 +1,68 @@
+uuid: 1fc5cc88-89cf-4077-b9cb-dc2fa72fc949
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.entertainment_review.entertainment_review.field_date_consumed
+    - field.field.entertainment_review.entertainment_review.field_entertainment_consumed
+    - field.field.entertainment_review.entertainment_review.field_rating
+    - field.field.entertainment_review.entertainment_review.field_review_notes
+    - the_entertainment_reviews.entertainment_review_type.entertainment_review
+  module:
+    - datetime
+    - text
+id: entertainment_review.entertainment_review.default
+targetEntityType: entertainment_review
+bundle: entertainment_review
+mode: default
+content:
+  field_date_consumed:
+    weight: 2
+    settings:
+      increment: 15
+      date_order: YMD
+      time_type: '24'
+    third_party_settings: {  }
+    type: datetime_datelist
+    region: content
+  field_entertainment_consumed:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_rating:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_review_notes:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden: {  }

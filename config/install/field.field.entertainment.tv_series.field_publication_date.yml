@@ -1,0 +1,21 @@
+uuid: 6f358859-a3f3-4524-8342-05cc78c6cad5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.entertainment.field_publication_date
+    - the_entertainment.entertainment_type.tv_series
+  module:
+    - datetime
+id: entertainment.tv_series.field_publication_date
+field_name: field_publication_date
+entity_type: entertainment
+bundle: tv_series
+label: 'Premiere Date'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

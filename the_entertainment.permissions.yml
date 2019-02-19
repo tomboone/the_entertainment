@@ -1,0 +1,22 @@
+add entertainment entities:
+  title: 'Create new Entertainment entities'
+
+administer entertainment entities:
+  title: 'Administer Entertainment entities'
+  description: 'Allow to access the administration form to configure Entertainment entities.'
+  restrict access: true
+
+delete entertainment entities:
+  title: 'Delete Entertainment entities'
+
+edit entertainment entities:
+  title: 'Edit Entertainment entities'
+
+view published entertainment entities:
+  title: 'View published Entertainment entities'
+
+view unpublished entertainment entities:
+  title: 'View unpublished Entertainment entities'
+
+view all entertainment revisions:
+  title: 'View all Entertainment revisions'

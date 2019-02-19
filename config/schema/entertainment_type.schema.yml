@@ -1,0 +1,12 @@
+the_entertainment.entertainment_type.*:
+  type: config_entity
+  label: 'Entertainment type config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string

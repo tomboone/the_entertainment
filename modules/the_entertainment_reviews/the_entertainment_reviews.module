@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ * Contains the_entertainment_reviews.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function the_entertainment_reviews_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the the_entertainment_reviews module.
+    case 'help.page.the_entertainment_reviews':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Module for tracking and reviewing consumption of entertainment (Books, Movies, TV Shows) entities') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function the_entertainment_reviews_theme() {
+  $theme = [];
+  $theme['entertainment_review'] = [
+    'render element' => 'elements',
+    'file' => 'entertainment_review.page.inc',
+    'template' => 'entertainment_review',
+  ];
+  $theme['entertainment_review_content_add_list'] = [
+    'render element' => 'content',
+    'variables' => ['content' => NULL],
+    'file' => 'entertainment_review.page.inc',
+  ];
+  return $theme;
+}
+
+/**
+* Implements hook_theme_suggestions_HOOK().
+*/
+function the_entertainment_reviews_theme_suggestions_entertainment_review(array $variables) {
+  $suggestions = [];
+  $entity = $variables['elements']['#entertainment_review'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'entertainment_review__' . $sanitized_view_mode;
+  $suggestions[] = 'entertainment_review__' . $entity->bundle();
+  $suggestions[] = 'entertainment_review__' . $entity->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'entertainment_review__' . $entity->id();
+  $suggestions[] = 'entertainment_review__' . $entity->id() . '__' . $sanitized_view_mode;
+  return $suggestions;
+}

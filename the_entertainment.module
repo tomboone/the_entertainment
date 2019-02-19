@@ -1,0 +1,89 @@
+<?php
+
+/**
+ * @file
+ * Contains the_entertainment.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_help().
+ */
+function the_entertainment_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the the_entertainment module.
+    case 'help.page.the_entertainment':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Module for tracking your media consumption') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function the_entertainment_theme() {
+  $theme = [];
+  $theme['entertainment'] = [
+    'render element' => 'elements',
+    'file' => 'entertainment.page.inc',
+    'template' => 'entertainment',
+  ];
+  $theme['entertainment_content_add_list'] = [
+    'render element' => 'content',
+    'variables' => ['content' => NULL],
+    'file' => 'entertainment.page.inc',
+  ];
+  return $theme;
+}
+
+/**
+* Implements hook_theme_suggestions_HOOK().
+*/
+function the_entertainment_theme_suggestions_entertainment(array $variables) {
+  $suggestions = [];
+  $entity = $variables['elements']['#entertainment'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'entertainment__' . $sanitized_view_mode;
+  $suggestions[] = 'entertainment__' . $entity->bundle();
+  $suggestions[] = 'entertainment__' . $entity->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'entertainment__' . $entity->id();
+  $suggestions[] = 'entertainment__' . $entity->id() . '__' . $sanitized_view_mode;
+  return $suggestions;
+}
+
+/**
+ * Implements hook_install().
+ */
+function the_entertainment_install() {
+  // Add book genre terms
+  $book_genres = ['Fiction', 'Nonfiction'];
+  foreach ($book_genres as $book_genre) {
+    $term = Term::create([
+      'name' => $book_genre,
+      'vid' => 'book_genre',
+    ])->save();
+  }
+  // Add film genre terms
+  $film_genres = ['Narrative', 'Documentary'];
+  foreach ($film_genres as $film_genre) {
+    $term = Term::create([
+      'name' => $film_genre,
+      'vid' => 'film_genre',
+    ])->save();
+  }
+  // Add TV genre terms
+  $tv_genres = ['Narrative', 'Documentary', 'News', 'Reality'];
+  foreach ($tv_genres as $tv_genre) {
+    $term = Term::create([
+      'name' => $tv_genre,
+      'vid' => 'tv_genre',
+    ])->save();
+  }
+}

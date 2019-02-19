@@ -1,0 +1,17 @@
+
+# Entertainment menu items definition
+entity.entertainment.collection:
+  title: 'The Entertainment'
+  route_name: entity.entertainment.collection
+  description: 'List Entertainment entities'
+  parent: system.admin_content
+  weight: 100
+
+
+# Entertainment type menu items definition
+entity.entertainment_type.collection:
+  title: 'Entertainment types'
+  route_name: entity.entertainment_type.collection
+  description: 'List Entertainment type (bundles)'
+  parent: system.admin_structure
+  weight: 99

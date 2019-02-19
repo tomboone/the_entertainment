@@ -1,0 +1,20 @@
+uuid: 4eaf99bf-5977-4078-99a8-1aab0d22d82e
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - the_entertainment
+id: entertainment.field_publication_date
+field_name: field_publication_date
+entity_type: entertainment
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

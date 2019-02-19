@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains the_entertainment_the_movie_db.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function the_entertainment_the_movie_db_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the the_entertainment_the_movie_db module.
+    case 'help.page.the_entertainment_the_movie_db':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Find and populate metadata for movie entities from The Movie Database API') . '</p>';
+      return $output;
+
+    default:
+  }
+}

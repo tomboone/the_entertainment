@@ -1,0 +1,23 @@
+# Entertainment review routing definition
+
+entity.entertainment_review.canonical:
+  route_name: entity.entertainment_review.canonical
+  base_route: entity.entertainment_review.canonical
+  title: 'View'
+
+entity.entertainment_review.edit_form:
+  route_name: entity.entertainment_review.edit_form
+  base_route: entity.entertainment_review.canonical
+  title: 'Edit'
+
+entity.entertainment_review.version_history:
+  route_name: entity.entertainment_review.version_history
+  base_route: entity.entertainment_review.canonical
+  title: 'Revisions'
+
+entity.entertainment_review.delete_form:
+  route_name:  entity.entertainment_review.delete_form
+  base_route:  entity.entertainment_review.canonical
+  title: Delete
+  weight: 10
+

@@ -1,0 +1,9 @@
+
+the_entertainment_the_tvdb.the_tvdb_search_form:
+  path: '/add-tv-series'
+  defaults:
+    _form: '\Drupal\the_entertainment_the_tvdb\Form\SearchForm'
+    _title: 'Add a TV Series'
+  requirements:
+    _access: 'TRUE'
+  

@@ -1,0 +1,19 @@
+uuid: aa142cce-e516-4078-b0bb-bab5e804a47e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.entertainment.field_publisher
+    - the_entertainment.entertainment_type.book
+id: entertainment.book.field_publisher
+field_name: field_publisher
+entity_type: entertainment
+bundle: book
+label: Publisher
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

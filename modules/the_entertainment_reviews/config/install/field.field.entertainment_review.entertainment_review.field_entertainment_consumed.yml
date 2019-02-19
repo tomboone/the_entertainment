@@ -1,0 +1,33 @@
+uuid: f4103805-34d6-490a-84b0-2b01d1b16994
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.entertainment_review.field_entertainment_consumed
+    - the_entertainment.entertainment_type.book
+    - the_entertainment.entertainment_type.movie
+    - the_entertainment.entertainment_type.tv_episode
+    - the_entertainment_reviews.entertainment_review_type.entertainment_review
+id: entertainment_review.entertainment_review.field_entertainment_consumed
+field_name: field_entertainment_consumed
+entity_type: entertainment_review
+bundle: entertainment_review
+label: 'Entertainment Consumed'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:entertainment'
+  handler_settings:
+    target_bundles:
+      book: book
+      movie: movie
+      tv_episode: tv_episode
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: book
+field_type: entity_reference

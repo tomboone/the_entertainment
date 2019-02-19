@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains the_entertainment_openlibrary.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function the_entertainment_openlibrary_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the the_entertainment_openlibrary module.
+    case 'help.page.the_entertainment_openlibrary':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Find and populate metadata for book entities from Internet Archive&#039;s OpenLibrary API') . '</p>';
+      return $output;
+
+    default:
+  }
+}

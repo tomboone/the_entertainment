@@ -1,0 +1,20 @@
+uuid: 08ec3592-527e-4662-b4c7-fbcbb43436e5
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - the_entertainment_reviews
+id: entertainment_review.field_date_consumed
+field_name: field_date_consumed
+entity_type: entertainment_review
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

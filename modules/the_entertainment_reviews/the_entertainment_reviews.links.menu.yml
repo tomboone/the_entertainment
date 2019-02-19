@@ -1,0 +1,18 @@
+
+# Entertainment review menu items definition
+entity.entertainment_review.collection:
+  title: 'Entertainment review list'
+  route_name: entity.entertainment_review.collection
+  description: 'List Entertainment review entities'
+  parent: system.admin_content
+  weight: 100
+
+
+# Entertainment review type menu items definition
+entity.entertainment_review_type.collection:
+  title: 'Entertainment review types'
+  route_name: entity.entertainment_review_type.collection
+  description: 'List Entertainment review type (bundles)'
+  parent: system.admin_structure
+  weight: 99
+

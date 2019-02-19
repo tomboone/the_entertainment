@@ -1,0 +1,63 @@
+uuid: e2dd6f06-e396-456a-9f1b-3c6f24e770d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.entertainment.movie.field_cover_image
+    - field.field.entertainment.movie.field_director
+    - field.field.entertainment.movie.field_film_genre
+    - field.field.entertainment.movie.field_publication_date
+    - image.style.medium
+    - the_entertainment.entertainment_type.movie
+  module:
+    - datetime
+    - image
+id: entertainment.movie.default
+targetEntityType: entertainment
+bundle: movie
+mode: default
+content:
+  field_cover_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: medium
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_director:
+    weight: 3
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_film_genre:
+    weight: 4
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_publication_date:
+    weight: 2
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: html_year
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  name:
+    label: hidden
+    type: string
+    weight: 1
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  user_id: true

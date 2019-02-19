@@ -1,0 +1,21 @@
+uuid: 79fa8f6b-7e53-4d2d-899a-ebd5900c60ff
+langcode: en
+status: true
+dependencies:
+  module:
+    - the_entertainment
+id: entertainment.field_authors
+field_name: field_authors
+entity_type: entertainment
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

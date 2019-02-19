@@ -1,0 +1,20 @@
+uuid: 9ea8976a-6b59-43e3-b9be-d439bef2fa35
+langcode: en
+status: true
+dependencies:
+  module:
+    - the_entertainment
+    - the_entertainment_reviews
+id: entertainment_review.field_entertainment_consumed
+field_name: field_entertainment_consumed
+entity_type: entertainment_review
+type: entity_reference
+settings:
+  target_type: entertainment
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,19 @@
+uuid: e7eed577-9a24-4e32-927e-a5d612ecb1ae
+langcode: en
+status: true
+dependencies:
+  module:
+    - text
+    - the_entertainment_reviews
+id: entertainment_review.field_review_notes
+field_name: field_review_notes
+entity_type: entertainment_review
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

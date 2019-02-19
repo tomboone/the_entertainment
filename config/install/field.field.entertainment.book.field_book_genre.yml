@@ -1,0 +1,29 @@
+uuid: 02a1d8c3-22c6-41c1-81ba-6b978616253d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.entertainment.field_book_genre
+    - taxonomy.vocabulary.book_genre
+    - the_entertainment.entertainment_type.book
+id: entertainment.book.field_book_genre
+field_name: field_book_genre
+entity_type: entertainment
+bundle: book
+label: Genre
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      book_genre: book_genre
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: 265f628a-6b45-454b-8b77-b92bc1632b3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.entertainment.field_publication_date
+    - the_entertainment.entertainment_type.tv_episode
+  module:
+    - datetime
+id: entertainment.tv_episode.field_publication_date
+field_name: field_publication_date
+entity_type: entertainment
+bundle: tv_episode
+label: 'Air Date'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

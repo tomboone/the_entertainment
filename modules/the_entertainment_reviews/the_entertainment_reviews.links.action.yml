@@ -1,0 +1,11 @@
+entity.entertainment_review.add_form:
+  route_name: entity.entertainment_review.add_page
+  title: 'Add Entertainment review'
+  appears_on:
+    - entity.entertainment_review.collection
+entity.entertainment_review_type.add_form:
+  route_name: entity.entertainment_review_type.add_form
+  title: 'Add Entertainment review type'
+  appears_on:
+    - entity.entertainment_review_type.collection
+

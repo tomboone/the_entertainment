@@ -1,0 +1,42 @@
+uuid: f09c09e8-4976-43b5-ab95-fcbb21939840
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.entertainment.tv_episode.field_publication_date
+    - field.field.entertainment.tv_episode.field_series
+    - the_entertainment.entertainment_type.tv_episode
+  module:
+    - datetime
+id: entertainment.tv_episode.default
+targetEntityType: entertainment
+bundle: tv_episode
+mode: default
+content:
+  field_publication_date:
+    weight: 2
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: html_date
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_series:
+    weight: 0
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  name:
+    label: hidden
+    type: string
+    weight: 1
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  user_id: true

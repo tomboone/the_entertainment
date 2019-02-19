@@ -1,0 +1,23 @@
+# Entertainment routing definition
+
+entity.entertainment.canonical:
+  route_name: entity.entertainment.canonical
+  base_route: entity.entertainment.canonical
+  title: 'View'
+
+entity.entertainment.edit_form:
+  route_name: entity.entertainment.edit_form
+  base_route: entity.entertainment.canonical
+  title: 'Edit'
+
+entity.entertainment.version_history:
+  route_name: entity.entertainment.version_history
+  base_route: entity.entertainment.canonical
+  title: 'Revisions'
+
+entity.entertainment.delete_form:
+  route_name:  entity.entertainment.delete_form
+  base_route:  entity.entertainment.canonical
+  title: Delete
+  weight: 10
+

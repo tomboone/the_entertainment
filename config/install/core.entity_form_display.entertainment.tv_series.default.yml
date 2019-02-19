@@ -1,0 +1,70 @@
+uuid: 1d26e2a4-6ece-4025-83b3-80052e852d80
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.entertainment.tv_series.field_cover_image
+    - field.field.entertainment.tv_series.field_network
+    - field.field.entertainment.tv_series.field_publication_date
+    - field.field.entertainment.tv_series.field_tv_genre
+    - image.style.medium
+    - the_entertainment.entertainment_type.tv_series
+  module:
+    - datetime
+    - image
+_core:
+  default_config_hash: Cspiq3cx9YeDANdMNMaVqMjNU8RKcDi-jJGZrvoCc0A
+id: entertainment.tv_series.default
+targetEntityType: entertainment
+bundle: tv_series
+mode: default
+content:
+  field_cover_image:
+    weight: 2
+    settings:
+      preview_image_style: medium
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_network:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_publication_date:
+    weight: 1
+    settings:
+      increment: 15
+      date_order: YMD
+      time_type: '24'
+    third_party_settings: {  }
+    type: datetime_datelist
+    region: content
+  field_tv_genre:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden: {  }

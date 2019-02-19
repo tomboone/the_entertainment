@@ -1,0 +1,6 @@
+uuid: a8011b25-3767-4460-ac6e-9ab31a4bfb32
+langcode: en
+status: true
+dependencies: {  }
+id: entertainment_review
+label: 'Entertainment Review'

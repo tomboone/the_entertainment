@@ -1,0 +1,19 @@
+uuid: 34683345-d047-4753-9818-de12f0cff2b5
+langcode: en
+status: true
+dependencies:
+  module:
+    - the_entertainment
+id: entertainment.field_series
+field_name: field_series
+entity_type: entertainment
+type: entity_reference
+settings:
+  target_type: entertainment
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

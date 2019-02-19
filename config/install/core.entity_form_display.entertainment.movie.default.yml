@@ -1,0 +1,68 @@
+uuid: 0bf527fe-f598-4e9c-bb12-48bcfc01f450
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.entertainment.movie.field_cover_image
+    - field.field.entertainment.movie.field_director
+    - field.field.entertainment.movie.field_film_genre
+    - field.field.entertainment.movie.field_publication_date
+    - image.style.thumbnail
+    - the_entertainment.entertainment_type.movie
+  module:
+    - datetime
+    - image
+id: entertainment.movie.default
+targetEntityType: entertainment
+bundle: movie
+mode: default
+content:
+  field_cover_image:
+    weight: 2
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_director:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_film_genre:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_publication_date:
+    weight: 1
+    settings:
+      increment: 15
+      date_order: YMD
+      time_type: '24'
+    third_party_settings: {  }
+    type: datetime_datelist
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden: {  }

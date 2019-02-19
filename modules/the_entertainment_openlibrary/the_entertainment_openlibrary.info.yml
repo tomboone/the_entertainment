@@ -1,0 +1,7 @@
+name: 'The Entertainment: OpenLibrary API'
+type: module
+description: 'Find and populate metadata for book entities from Internet Archive''s OpenLibrary API'
+core: 8.x
+package: 'The Entertainment'
+dependencies:
+  - the_entertainment

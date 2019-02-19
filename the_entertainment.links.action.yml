@@ -1,0 +1,11 @@
+entity.entertainment.add_form:
+  route_name: entity.entertainment.add_page
+  title: 'Add Entertainment'
+  appears_on:
+    - entity.entertainment.collection
+entity.entertainment_type.add_form:
+  route_name: entity.entertainment_type.add_form
+  title: 'Add Entertainment type'
+  appears_on:
+    - entity.entertainment_type.collection
+

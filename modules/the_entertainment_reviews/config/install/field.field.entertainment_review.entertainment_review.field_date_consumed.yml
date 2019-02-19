@@ -1,0 +1,24 @@
+uuid: bef65ae8-de71-40bf-8c06-c308243800ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.entertainment_review.field_date_consumed
+    - the_entertainment_reviews.entertainment_review_type.entertainment_review
+  module:
+    - datetime
+id: entertainment_review.entertainment_review.field_date_consumed
+field_name: field_date_consumed
+entity_type: entertainment_review
+bundle: entertainment_review
+label: 'Date Consumed'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

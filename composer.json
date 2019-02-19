@@ -1,0 +1,14 @@
+{
+  "name": "drupal/the_entertainment",
+  "type": "drupal-module",
+  "description": "Module for tracking your media consumption",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/the_entertainment",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/the_entertainment",
+    "source": "http://cgit.drupalcode.org/the_entertainment"
+  },
+  "require": { }
+}

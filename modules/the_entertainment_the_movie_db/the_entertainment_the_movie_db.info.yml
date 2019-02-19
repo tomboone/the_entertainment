@@ -1,0 +1,7 @@
+name: 'The Entertainment: The Movie DB API'
+type: module
+description: 'Find and populate metadata for movie entities from The Movie Database API'
+core: 8.x
+package: 'The Entertainment'
+dependencies:
+  - the_entertainment

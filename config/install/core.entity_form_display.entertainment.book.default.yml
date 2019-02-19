@@ -1,0 +1,79 @@
+uuid: c89c782d-0e0a-43d2-acc7-825665be0c24
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.entertainment.book.field_authors
+    - field.field.entertainment.book.field_book_genre
+    - field.field.entertainment.book.field_cover_image
+    - field.field.entertainment.book.field_publication_date
+    - field.field.entertainment.book.field_publisher
+    - image.style.thumbnail
+    - the_entertainment.entertainment_type.book
+  module:
+    - datetime
+    - image
+_core:
+  default_config_hash: 9XFiTICAs-1ImK4_sdIzvAR3kkEWdTxHo0i5u8dEq7I
+id: entertainment.book.default
+targetEntityType: entertainment
+bundle: book
+mode: default
+content:
+  field_authors:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_book_genre:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_cover_image:
+    weight: 2
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_publication_date:
+    weight: 5
+    settings:
+      increment: 15
+      date_order: YMD
+      time_type: '24'
+    third_party_settings: {  }
+    type: datetime_datelist
+    region: content
+  field_publisher:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden: {  }

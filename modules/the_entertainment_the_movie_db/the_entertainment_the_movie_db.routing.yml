@@ -1,0 +1,9 @@
+
+the_entertainment_the_movie_db.the_movie_db_search_form:
+  path: '/add-movie'
+  defaults:
+    _form: '\Drupal\the_entertainment_the_movie_db\Form\SearchForm'
+    _title: 'Add a Movie'
+  requirements:
+    _access: 'TRUE'
+  

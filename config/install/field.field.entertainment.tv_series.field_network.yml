@@ -1,0 +1,19 @@
+uuid: cadfffb8-d851-45be-9705-1038657b8b70
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.entertainment.field_network
+    - the_entertainment.entertainment_type.tv_series
+id: entertainment.tv_series.field_network
+field_name: field_network
+entity_type: entertainment
+bundle: tv_series
+label: Network(s)
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

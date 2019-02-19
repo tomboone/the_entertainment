@@ -1,0 +1,29 @@
+uuid: bb7eaf78-78f4-4481-8c0f-53adcae9c968
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.entertainment.field_tv_genre
+    - taxonomy.vocabulary.tv_genre
+    - the_entertainment.entertainment_type.tv_series
+id: entertainment.tv_series.field_tv_genre
+field_name: field_tv_genre
+entity_type: entertainment
+bundle: tv_series
+label: 'TV Genre'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tv_genre: tv_genre
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

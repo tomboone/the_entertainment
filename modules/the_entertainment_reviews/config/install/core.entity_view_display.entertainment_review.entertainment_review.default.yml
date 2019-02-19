@@ -1,0 +1,60 @@
+uuid: 10f49c36-f469-4cdd-b4d7-2fcb96c0ef5a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.entertainment_review.entertainment_review.field_date_consumed
+    - field.field.entertainment_review.entertainment_review.field_entertainment_consumed
+    - field.field.entertainment_review.entertainment_review.field_rating
+    - field.field.entertainment_review.entertainment_review.field_review_notes
+    - the_entertainment_reviews.entertainment_review_type.entertainment_review
+  module:
+    - datetime
+    - options
+    - text
+id: entertainment_review.entertainment_review.default
+targetEntityType: entertainment_review
+bundle: entertainment_review
+mode: default
+content:
+  field_date_consumed:
+    weight: 2
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: html_date
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_entertainment_consumed:
+    weight: 1
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_rating:
+    weight: 3
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_review_notes:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  name:
+    label: hidden
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  user_id: true
