@@ -28,6 +28,7 @@ class SearchForm extends FormBase {
       '#maxlength' => 64,
       '#size' => 64,
       '#weight' => '-1',
+      '#required' => TRUE,
     ];
     $form['submit'] = [
       '#type' => 'submit',
