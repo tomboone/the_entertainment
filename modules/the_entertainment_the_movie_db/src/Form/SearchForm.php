@@ -28,6 +28,7 @@ class SearchForm extends FormBase {
       '#maxlength' => 64,
       '#size' => 64,
       '#weight' => '-2',
+      '#required' => TRUE,
     ];
     $form['release_year'] = [
       '#type' => 'textfield',
