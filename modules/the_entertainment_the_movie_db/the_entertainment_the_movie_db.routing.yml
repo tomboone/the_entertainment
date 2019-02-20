@@ -7,3 +7,14 @@ the_entertainment_the_movie_db.the_movie_db_search_form:
   requirements:
     _access: 'TRUE'
   
+
+the_entertainment_the_movie_db.the_movie_db_api_key_form:
+  path: '/admin/config/services/the-movie-db'
+  defaults:
+    _form: '\Drupal\the_entertainment_the_movie_db\Form\TheMovieDbApiKeyForm'
+    _title: 'The Movie Database'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+

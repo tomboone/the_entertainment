@@ -7,3 +7,14 @@ the_entertainment_the_tvdb.the_tvdb_search_form:
   requirements:
     _access: 'TRUE'
   
+
+the_entertainment_the_tvdb.the_tvdb_api_key_form:
+  path: '/admin/config/services/the-tvdb'
+  defaults:
+    _form: '\Drupal\the_entertainment_the_tvdb\Form\TheTvdbApiKeyForm'
+    _title: 'The TVDB'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+

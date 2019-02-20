@@ -1,0 +1,7 @@
+the_entertainment_the_tvdb.the_tvdb_api_key_form:
+  title: 'The TVDB'
+  route_name: the_entertainment_the_tvdb.the_tvdb_api_key_form
+  description: 'Set your API key for The TVDB'
+  parent: system.admin_config_services
+  weight: 99
+
