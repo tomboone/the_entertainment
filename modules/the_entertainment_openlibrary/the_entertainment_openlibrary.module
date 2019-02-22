@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_help().
@@ -22,3 +23,137 @@ function the_entertainment_openlibrary_help($route_name, RouteMatchInterface $ro
     default:
   }
 }
+
+/**
+ * @param $form_state
+ */
+function _search_openlibrary(FormStateInterface $form_state) {
+  $endpoint = 'http://openlibrary.org/search.json?';
+  $terms = [];
+  if (!empty($form_state->getValue('keywords'))) {
+    array_push($terms, 'q=' . $form_state->getValue('keywords'));
+  }
+  if (!empty($form_state->getValue('title'))) {
+    array_push($terms, 'title=' . $form_state->getValue('title'));
+  }
+  if (!empty($form_state->getValue('author'))) {
+    array_push($terms, 'author=' . $form_state->getValue('author'));
+  }
+  $parameters = implode('&', $terms);
+  $endpoint .= $parameters;
+
+  // Initialize Guzzle HTTP client
+  $client = \Drupal::httpClient();
+
+  try {
+    $request = $client->get($endpoint);  // make API call
+    $response = $request->getBody();  // get API response
+    $response = (array)json_decode($response);  // convert JSON to array
+    $results = $response['docs'];
+    $output = [];
+    foreach ($results as $result) {
+      $string = '';
+      if (!empty($result->title) || !empty($result->subtitle)) {
+        $string .= '<strong>';
+        if (!empty($result->title)) {
+          $string .= $result->title;
+        }
+        if (!empty($result->subtitle)) {
+          $string .= ': ' . $result->subtitle;
+        }
+        $string .= '</strong>';
+      }
+      if (!empty($result->author_name)) {
+        $authors = [];
+        if (!empty($result->title) || !empty($result->subtitle)) {
+          $string .= '<br />';
+        }
+        foreach ($result->author_name as $author) {
+          array_push($authors, $author);
+        }
+        $string .= implode(', ', $authors);
+      }
+      if (!empty($result->publisher)) {
+        $publishers = [];
+        if ((!empty($result->title) || !empty($result->subtitle)) || !empty($result->author_name)) {
+            $string .= '<br />';
+        }
+        foreach ($result->publisher as $publisher) {
+          array_push($publishers, $publisher);
+        }
+        $string .= implode(', ', $publishers);
+      }
+      if (!empty($result->first_publish_year)) {
+        if (!empty($result->publisher)) {
+          $string .= '<br />';
+        }
+        if (!empty($result->publisher)) {
+          $string .= $result->first_publish_year;
+        }
+      }
+      array_push($output, $string);
+    }
+    $output = implode('<br /><br />', $output);
+    return $output;
+  }
+  catch (RequestException $e) {
+
+    // If search fails, display error as Drupal status message
+    watchdog_exception('the_entertainment_openlibrary', $e->getMessage());
+  }
+}
+
+function _isbn_openlibrary(FormStateInterface $formState) {
+  $endpoint = 'https://openlibrary.org/api/books?bibkeys=ISBN:';
+  $parameters = str_replace(' ', '', $formState->getValue('isbn'));
+  $parameters = str_replace('-', '', $parameters);
+  $endpoint .= $parameters . '&jscmd=details&format=json';
+  // Initialize Guzzle HTTP client
+  $client = \Drupal::httpClient();
+
+  try {
+    $request = $client->get($endpoint);  // make API call
+    $response = $request->getBody();  // get API response
+    $response = (array)json_decode($response);  // convert JSON to array
+    $result = $response['ISBN:' . $formState->getValue('isbn')]->details;
+    $output = '';
+    if (!empty($result->title)) {
+      $output .= '<strong>' . $result->title . '</strong>';
+    }
+    if (count($result->authors) > 0) {
+      if (!empty($result->title)) {
+        $output .= '<br />';
+      }
+      $authors = [];
+      foreach ($result->authors as $author) {
+        array_push($authors, $author->name);
+      }
+      $authors = implode(', ', $authors);
+      $output .= $authors;
+    }
+    if (count($result->publishers) > 0) {
+      if (!empty($result->title) || count($result->authors) > 0) {
+        $output .= '<br />';
+      }
+      $publishers = [];
+      foreach ($result->publishers as $publisher) {
+        array_push($publishers, $publisher);
+      }
+      $publishers = implode(', ', $publishers);
+      $output .= $publishers;
+    }
+    if (!empty($result->publish_date)) {
+      if (!empty($result->title) || count($result->authors) > 0 || count($result->publishers) > 0) {
+        $output .= '<br />';
+      }
+      $output .= $result->publish_date;
+    }
+    return $output;
+
+  }
+  catch (RequestException $e) {
+
+      // If search fails, display error as Drupal status message
+      watchdog_exception('the_entertainment_openlibrary', $e->getMessage());
+    }
+  }

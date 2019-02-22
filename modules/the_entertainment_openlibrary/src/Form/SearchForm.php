@@ -99,6 +99,23 @@ class SearchForm extends FormBase {
       '#value' => $this->t('Find Book'),
     ];
 
+    if ($form_state->getValue('type') == 0
+      && (!empty($form_state->getValue('keywords'))
+        || !empty($form_state->getValue('title'))
+        || !empty($form_state->getValue('author')))) {
+      $form['results'] = [
+        '#markup' => '<div>' . _search_openlibrary($form_state) . '</div>',
+        '#weight' => 100,
+      ];
+    }
+
+    elseif ($form_state->getValue('type') == 1
+      && !empty($form_state->getValue('isbn'))) {
+      $form['results'] = [
+        '#markup' => '<div>' . _isbn_openlibrary($form_state) . '</div>',
+        '#weight' => 100,
+      ];
+    }
     return $form;
   }
 
@@ -107,17 +124,22 @@ class SearchForm extends FormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     parent::validateForm($form, $form_state);
+    if ($form_state->getValue('type') == 0) {
+      if (empty($form_state->getValue('keywords'))
+        && empty($form_state->getValue('title'))
+        && empty($form_state->getValue('author'))) {
+        $form_state->setErrorByName('keywords', t('You must provide search terms in at least one of the fields below.'));
+        $form_state->setErrorByName('title');
+        $form_state->setErrorByName('author');
+      }
+    }
   }
 
   /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    // Display result.
-    foreach ($form_state->getValues() as $key => $value) {
-      drupal_set_message($key . ': ' . $value);
-    }
-
+    $form_state->setRebuild();
   }
 
 }
