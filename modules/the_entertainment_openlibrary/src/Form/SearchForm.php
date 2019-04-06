@@ -4,6 +4,7 @@ namespace Drupal\the_entertainment_openlibrary\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 
 /**
  * Class SearchForm.
@@ -99,23 +100,6 @@ class SearchForm extends FormBase {
       '#value' => $this->t('Find Book'),
     ];
 
-    if ($form_state->getValue('type') == 0
-      && (!empty($form_state->getValue('keywords'))
-        || !empty($form_state->getValue('title'))
-        || !empty($form_state->getValue('author')))) {
-      $form['results'] = [
-        '#markup' => '<div>' . _search_openlibrary($form_state) . '</div>',
-        '#weight' => 100,
-      ];
-    }
-
-    elseif ($form_state->getValue('type') == 1
-      && !empty($form_state->getValue('isbn'))) {
-      $form['results'] = [
-        '#markup' => '<div>' . _isbn_openlibrary($form_state) . '</div>',
-        '#weight' => 100,
-      ];
-    }
     return $form;
   }
 
@@ -133,13 +117,38 @@ class SearchForm extends FormBase {
         $form_state->setErrorByName('author');
       }
     }
+    elseif ($form_state->getValue('type') == 1) {
+      if (empty($form_state->getValue('isbn'))) {
+        $form_state->setErrorByName('isbn', t('You must provide an ISBN in the field below.'));
+      }
+    }
   }
 
   /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $form_state->setRebuild();
+    $route = 'the_entertainment_openlibrary.book_results_controller_book_results';
+    $queryParameters = [];
+    if ($form_state->getValue('type') == 0) {
+      if (!empty($form_state->getValue('keywords'))) {
+        $queryParameters['keywords'] = str_replace(' ', '+', $form_state->getValue('keywords'));
+      }
+      if (!empty($form_state->getValue('title'))) {
+        $queryParameters['title'] = str_replace(' ', '+', $form_state->getValue('title'));
+      }
+      if (!empty($form_state->getValue('author'))) {
+        $queryParameters['author'] = str_replace(' ', '+', $form_state->getValue('author'));
+      }
+    }
+    elseif ($form_state->getValue('type') == 1) {
+      if (!empty($form_state->getValue('isbn'))) {
+        $queryParameters['isbn'] = str_replace(['-', ' '], '', $form_state->getValue('isbn'));
+      }
+    }
+    if (count($queryParameters > 0)) {
+      $form_state->setRedirect($route, $queryParameters);
+    }
+    return;
   }
-
 }

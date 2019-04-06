@@ -6,4 +6,11 @@ the_entertainment_openlibrary.openlibrary_search_form:
     _title: 'Add a Book'
   requirements:
     _access: 'TRUE'
-  
+
+the_entertainment_openlibrary.book_results_controller_book_results:
+  path: '/book-results'
+  defaults:
+    _controller: '\Drupal\the_entertainment_openlibrary\Controller\BookResultsController::book_results'
+    _title: 'Book Search Results'
+  requirements:
+    _permission: 'access content'
